@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :comments
+end
+
+
+
+
   resources :pages #resources same as all the bottom routes together #
   # get '/pages', to: 'pages#index'
   #post '/pages', to: 'pages#create'
