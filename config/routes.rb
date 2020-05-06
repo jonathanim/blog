@@ -2,12 +2,26 @@ Rails.application.routes.draw do
   resources :customers
   resources :posts do
     resources :comments
-end
+  end
+
+
+
+  resources :pages
+
+  resources :orders
 
 
 
 
-  resources :pages #resources same as all the bottom routes together #
+
+
+
+
+
+
+
+
+  #resources same as all the bottom routes together #
   # get '/pages', to: 'pages#index'
   #post '/pages', to: 'pages#create'
 
