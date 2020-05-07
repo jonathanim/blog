@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+    rescue_from ActiveRecord::RecordNotFound, with: :catch_not_found
     before_action :set_order, only: [:show, :edit, :update, :destroy]
 
 
@@ -66,6 +66,13 @@ class OrdersController < ApplicationController
       def order_params
         params.require(:order).permit(:product_name, :product_count, :customer, :customer_id)
       end
+
+
+          def catch_not_found(e)
+            Rails.logger.debug("We had an order error.")
+            flash.alert = e.to_s
+            redirect_to orders_path
+          end
 
 
 
